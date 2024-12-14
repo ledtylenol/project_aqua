@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c82evvbahep0c"]
+[gd_scene load_steps=7 format=3 uid="uid://c82evvbahep0c"]
 
 [ext_resource type="Script" uid="uid://tvwnevi2nmnn" path="res://camera_3d.gd" id="1_a202f"]
+[ext_resource type="Shader" uid="uid://7ry83580p2yl" path="res://node_3d.tres" id="2_noarx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0tk4"]
+render_priority = 0
+shader = ExtResource("2_noarx")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_noarx"]
+material = SubResource("ShaderMaterial_a0tk4")
 orientation = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]

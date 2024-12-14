@@ -1,0 +1,54 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://7ry83580p2yl"]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_c0rlp"]
+size = Vector2(500, 200)
+expression = "output0 = input0 + input1;"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qo6pg"]
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1qchj"]
+input_name = "vertex"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// Input:3
+	vec3 n_out3p0 = NORMAL;
+
+
+// Input:4
+	vec3 n_out4p0 = VERTEX;
+
+
+	vec3 n_out2p0;
+// Expression:2
+	n_out2p0 = vec3(0.0, 0.0, 0.0);
+	{
+		n_out2p0 = n_out3p0 + n_out4p0;
+	}
+
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+
+}
+"
+graph_offset = Vector2(-423.952, 78.5399)
+nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_c0rlp")
+nodes/fragment/2/position = Vector2(-180, 160)
+nodes/fragment/2/size = Vector2(500, 200)
+nodes/fragment/2/input_ports = "0,4,input0;1,4,input1;"
+nodes/fragment/2/output_ports = "0,4,output0;"
+nodes/fragment/2/expression = "output0 = input0 + input1;"
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_qo6pg")
+nodes/fragment/3/position = Vector2(-620, 140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_1qchj")
+nodes/fragment/4/position = Vector2(-580, 280)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 0, 4, 0, 2, 1)
